@@ -131,13 +131,8 @@ class Login extends React.Component {
               <ButtonToolbar>
                 <Button type="submit">Login</Button>
                 <Button
-                  type="submit"
                   href="/register"
-                  className={
-                    window.location.pathname === '/register'
-                      ? "nav-link active"
-                      : "nav-link"
-                  }
+                  type="button"
                 >
                   New User Registration
                 </Button>
