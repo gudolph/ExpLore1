@@ -1,6 +1,8 @@
 import React from "react";
 import { Col, Form, Modal, Button, ButtonToolbar } from "react-bootstrap";
 import API from "../../utils/API";
+import { Redirect, Switch, Route} from "react-router-dom";
+import Register from './register'
 
 class Login extends React.Component {
   constructor(props, context) {
@@ -8,6 +10,7 @@ class Login extends React.Component {
 
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.onButtonClick = this.onButtonClick.bind(this);
 
     this.state = {
       show: true,
@@ -15,7 +18,9 @@ class Login extends React.Component {
       email: "",
       password: "",
       password2: "",
-      userId: ""
+      userId: "",
+      showComponent: false
+
     };
   }
 
@@ -53,6 +58,15 @@ class Login extends React.Component {
     let path = "/";
     this.props.history.push(path)
   }
+
+  onButtonClick() {
+    this.setState({
+      showComponent: true,
+    });
+  }
+
+ 
+
   handleInputChanges = event => {
     const { name, value } = event.target;
     this.setState({
@@ -131,11 +145,11 @@ class Login extends React.Component {
               <ButtonToolbar>
                 <Button type="submit">Login</Button>
                 <Button
-                  href="/register"
                   type="button"
+                  onClick={this.onButtonClick}
                 >
                   New User Registration
-                </Button>
+                </Button>{this.state.showComponent ? <Register/> : null}
               </ButtonToolbar>
             </Form>
           </div>
