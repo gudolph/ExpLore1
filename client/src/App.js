@@ -52,6 +52,7 @@ class App extends Component {
           <Switch >
             <Route
               exact path='/register'
+              component = {Register}
               render={(props) =>
                 <Register
                   {...props}
