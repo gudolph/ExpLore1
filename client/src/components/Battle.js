@@ -1,5 +1,6 @@
 import React from "react";
-
+import Info  from './Info';
+import Location from './Location';
 
   // ===========Define Variables=====//
   //===============User=============//
@@ -33,8 +34,8 @@ import React from "react";
     }
  ];
 
- function Battle(props) {
-  console.log("Battle", props);
+ 
+  // console.log("Battle", props);
     // initUser(user, "user name", "user attacks");
     //     //  monster(monster, "monster hp");
     //     //Sets up the initial battle screen
@@ -42,9 +43,11 @@ import React from "react";
     //     //Sets up HP and displays
     //     monster.hp = user;
     // }  
-
-    //Handles Damage and Hit Chance attack poke
-    function poke(monster){
+ 
+    //Handles Damage and Hit Chance{} attack poke
+    const poke = function(monster, props){
+      console.log("I was Clicked")
+      console.log(<Info {...props}/>)
       var userRoll = roll(1,8);
       console.log("u",userRoll);
       var monsterRoll =roll(1,8);
@@ -52,7 +55,7 @@ import React from "react";
       if(userRoll >= monsterRoll){
         //hit monsterhp 
         monster.hp = monster.hp - userRoll;
-        document.querySelector('#monster').innerHTML = monster.hp;
+        // document.querySelector('#monster').innerHTML = monster.hp;
 
         console.log("hit")
         return true;
@@ -64,7 +67,7 @@ import React from "react";
     } 
 
       // Handles Damage and Hit Chance attack glare
-    function unapprovingGlare(monster){
+    const unapprovingGlare = function(monster){
       var userRoll = roll(9,16);
       // console.log("u2",userRoll);
       var monsterRoll =roll(9,16);
@@ -82,7 +85,7 @@ import React from "react";
     }
 
     //Handles Damage and Hit Chance attack pan
-  function fryingPan(monster){
+  const fryingPan = function(monster){
     var userRoll = roll(17,32);
     // console.log("u3",userRoll);
     var monsterRoll =roll(17,32);
@@ -100,7 +103,7 @@ import React from "react";
   }
 
     //Handles Damage and Hit Chance attack Spork
-    function usedSpork(monster){
+   const usedSpork = function(monster){
       var userRoll = roll(33,64);
       // console.log("u4",userRoll);
       var monsterRoll =roll(33,64);
@@ -118,7 +121,7 @@ import React from "react";
   }
 
     //Handles Damage and Hit Chance attack yoyo
-    function yoyo(monster){
+    const yoyo = function(monster){
       var userRoll = roll(65,125);
       // console.log("u",userRoll);
       var monsterRoll =roll(65,125);
@@ -156,5 +159,12 @@ import React from "react";
         monster.hp -= damage;
         }
     }
-  }
-    export default Battle;
+
+    // Battle.poke = poke;
+    // Battle.unapprovingGlare = unapprovingGlare;
+    // Battle.fryingPan = fryingPan;
+    // Battle.usedSpork = usedSpork;
+    // Battle.yoyo = yoyo;
+
+  
+    export {poke, unapprovingGlare, fryingPan, usedSpork, yoyo};

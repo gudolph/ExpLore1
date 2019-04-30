@@ -6,7 +6,10 @@ import Login from './components/Modals/login';
 import Jumbotron from './components/Jumbotron';
 import Navbar from './components/Navbar';
 import Info from './components/Info';
-import API from "./utils/API"
+import API from "./utils/API";
+import Location from "./components/Location";
+import {poke, unapprovingGlare, fryingPan, usedSpork, yoyo} from "./components/Battle"
+
 
 class App extends Component {
 
@@ -18,7 +21,29 @@ class App extends Component {
     email: "",
     password: "",
     password2: "",
-    score: ""
+    score: "",
+    poke: poke,
+    unapprovingGlare: unapprovingGlare,
+    fryingPan: fryingPan,
+    usedSpork: usedSpork,
+    yoyo: yoyo,
+    currentGame: {}
+
+  }
+  //get current location game info from the Info component
+  currentGame = (key, name, monster, image, lat, lng, monsterHP) =>{
+    this.setState({
+        currentGame: {
+          key: key,
+          name: name,
+          monster: monster,
+          image: image,
+          lat: lat,
+          lng: lng,
+          mosterHP: monsterHP
+        }
+      })
+      console.log(this.state.currentGame);
 
   }
 
@@ -79,9 +104,27 @@ class App extends Component {
                 />
               }
             />
+            <Route
+              render = {(props) =>
+                <Info {...props}
+                poke={this.poke}
+                currentGame={this.currentGame}
+                
 
+              />}
+            />
+
+            <Route
+              render = {(props) =>
+                <Location {...props}
+                poke={this.poke}
+                currentGame={this.currentGame}
+
+              />}
+            />
+              
           </Switch>
-          <Info />
+            
         </div>
 
       </Router>

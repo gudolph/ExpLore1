@@ -1,23 +1,44 @@
 import React from "react";
-import Battle from "./Battle.js"
+import {poke, unapprovingGlare, fryingPan, usedSpork, yoyo} from "./Battle.js"
 
-function Location(props) {
+class Location extends React.Component {
+  constructor(props) {
+      super(props);
+  }
+  componentDidMount(){}
+  sendGame(){
+    //this.props.currentGame(this.props.game, this.props.name, this.props.monster, this.props.image, this.props.lat, this.props.lng, this.props.monsterHP)
+  }
+
+  
+  
+  // console.log(props)
+  // this.props.currentGame(props.game, props.name, props.monster, props.image, props.lat, props.lng, props.monsterHP)
+render() {
+  
+  this.sendGame();
+
   return (
-    <div class="battle">
+    <div className="battle">
       <div className="card">
         <div className="img-container">
           <img
-            alt={props.name}
-            src={props.image}
+            alt={this.props.name}
+            src={this.props.image}
           />
         </div>
         <div className="content">
-          <ul>
-            <li>
-              <strong>Location:</strong> {props.name}
+          <ul className="list-group list-group-flush">
+            <li className="list-group-item">
+              <strong>Location:</strong> {this.props.name}
+            </li>
+            <li className="list-group-item">
+              <strong>Foe:</strong> {this.props.monster}
+            </li>
+            <li className="list-group-item">
+              <strong>Foe HP:</strong> {this.props.monsterHP}
             </li>
             <li>
-              <strong>Foe:</strong> {props.monster}
             </li>
           </ul>
         </div>
@@ -26,28 +47,29 @@ function Location(props) {
     {/* // begin buttons for battle  */}
     <ul>
       <li className="poke">
-        <button className="btn btn-primary" onClick={props.poke}>Poke</button>
+        <button className="btn btn-primary" onClick={poke}>Poke</button>
       </li>
         <br></br>
       <li className="glare">
-        <button className="btn btn-primary" onClick={props.unapprovingGlare}>Unapproving Glare</button>
+        <button className="btn btn-primary" onClick={unapprovingGlare}>Unapproving Glare</button>
       </li>
         <br></br>
       <li className="fryingPan">
-        <button className="btn btn-primary" onClick={props.fryingPan}>Frying Pan</button>
+        <button className="btn btn-primary" onClick={fryingPan}>Frying Pan</button>
       </li>
         <br></br>
       <li className="usedSpork">
-        <button className="btn btn-primary" onClick={props.usedSpork}>Used Spork</button>
+        <button className="btn btn-primary" onClick={usedSpork}>Used Spork</button>
       </li>
         <br></br>
       <li className="yoyo">
-        <button className="btn btn-primary" onClick={props.yoyo}>Yo-yo</button>
+        <button className="btn btn-primary" onClick={yoyo}>Yo-yo</button>
       </li>
     </ul>
   </div>
   
   );
+}
 }
 
 export default Location;
