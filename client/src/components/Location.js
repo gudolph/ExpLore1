@@ -5,18 +5,15 @@ class Location extends React.Component {
   constructor(props) {
       super(props);
   }
-  componentDidMount(){}
-  sendGame(){
-    //this.props.currentGame(this.props.game, this.props.name, this.props.monster, this.props.image, this.props.lat, this.props.lng, this.props.monsterHP)
+  componentDidMount(){
+    
+      this.props.currentGame(this.props.game, this.props.name, this.props.monster, this.props.image, this.props.lat, this.props.lng, this.props.monsterHP)
+    
   }
-
   
-  
-  // console.log(props)
-  // this.props.currentGame(props.game, props.name, props.monster, props.image, props.lat, props.lng, props.monsterHP)
 render() {
   
-  this.sendGame();
+ console.log(this.props);
 
   return (
     <div className="battle">

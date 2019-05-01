@@ -4,6 +4,7 @@ import Wrapper from "./Wrapper";
 import Location from "./Location.js";
 import data from "../game.json";
 import Timer from "./Timer";
+import { clearInterval } from "timers";
 
 let counter = 0;
 let Game;
@@ -15,58 +16,19 @@ class Info extends React.Component {
         this.state = { gameStart: false, coord: {}, game: {} };
     }
     
+   
     handleStartClick() {
         
         this.setState({ gameStart: true })
-        var game=this.state.game;
-        console.log(Game);
-        this.props.currentGame(game.key, game.name, game.monster, game.image, game.lat, game.lng, game.monsterHP)
-        ;
     }
-    setGameData(Game){
-        console.log(Game);
-
-
-        // this.setState({game: 
-        //     {
-        //     key: Game.id,
-        //     name: Game.name,
-        //     monster: Game.monsterName,
-        //     image:Game.monsterImage,
-        //     lat: Game.location.lat,
-        //     lng: Game.location.lng,
-        //     mosterHP: Game.monsterHP
-        // }})
-        //this.getData();
-    }
-    // getData(){        
-    //         console.log("data was fetched");
-    //         let game = this.state.game
-    //         console.log("Info.js ln 29", game)
-    //         this.props.currentGame(game.key, game.name, game.monster, game.image, game.lat, game.lng, game.monsterHP)
-
-
-        // setTimeout(() =>{
-        //     console.log("data was fetched");
-        //     let game = this.state.game
-        //     console.log("Info.js ln 29", game)
-        //     this.props.currentGame(game.key, game.name, game.monster, game.image, game.lat, game.lng, game.monsterHP)
-        // },1000)
-
-    // }
-
-    
+       
 
     passUpCoordinates = (coord) => {
         this.setState({ coord: coord });
         console.log(coord.lat, coord.lng)
     }
 
-
-
-    componentDidMount(){
-        this.setGameData();
-     }
+  
     render() {
         // if state gameStart is true, load Checkin component.
         const gameStart = this.state.gameStart;

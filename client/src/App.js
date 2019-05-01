@@ -30,6 +30,9 @@ class App extends Component {
     currentGame: {}
 
   }
+  // componentDidMount(){
+    
+  // };
   //get current location game info from the Info component
   currentGame = (key, name, monster, image, lat, lng, monsterHP) =>{
     this.setState({
@@ -105,6 +108,7 @@ class App extends Component {
               }
             />
             <Route
+              
               render = {(props) =>
                 <Info {...props}
                 poke={this.poke}
